@@ -1,0 +1,29 @@
+/* Header style */
+.header {
+    width: 100%;
+    height:80px;
+    background-color: #333; /* Couleur de fond du header */
+    color: white; /* Couleur du texte */
+    padding: 10px 0; /* Padding vertical pour le header */
+    text-align: center; /* Centre le texte horizontalement */
+    position: fixed; /* Rendre le header fixe en haut de la page */
+    top: 0; /* Positionner le header tout en haut */
+    left: 0; /* S'assurer qu'il commence au bord gauche */
+    right: 0; /* S'assurer qu'il s'étend jusqu'au bord droit */
+    z-index: 1000; /* Assurez-vous qu'il soit toujours au-dessus des autres éléments */
+  }
+  
+  .header h1 {
+    font-size: 1.5rem;         
+    color: white;              
+    font-weight: bold;         
+    text-align: center;           
+    text-transform: uppercase; /* Mettre tout le texte en majuscules */
+    letter-spacing: 2px;   
+  }
+  
+  /* Ajouter un padding top pour éviter que le contenu soit masqué par le header */
+  body {
+    padding-top: 60px; /* Compense la hauteur du header */
+  }
+  

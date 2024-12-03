@@ -1,0 +1,29 @@
+/* Style général pour les écrans plus grands */
+.title {
+    font-size: 2rem;         
+    color: #333;              
+    font-weight: bold;         
+    text-align: center;        
+    margin-bottom: 20px;       
+    text-transform: uppercase; /* Mettre tout le texte en majuscules */
+    letter-spacing: 2px;      
+  }
+  
+  /* Les Mobiles */
+  @media (max-width: 767px) {
+    .title {
+      font-size: 1.8rem;        /* Réduit la taille de la police sur les petits écrans */
+      margin-bottom: 15px;      /* Moins d'espace sous le titre */
+      letter-spacing: 1px;      /* Réduit l'espacement des lettres */
+    }
+  }
+  
+  /* Mobile plus petit */
+  @media (max-width: 480px) {
+    .title {
+      font-size: 1rem;        /* Taille encore plus petite pour les très petits écrans */
+      margin-bottom: 10px;      /* Espacement réduit */
+      letter-spacing: 0px;      /* Espacement des lettres à 0 pour éviter la surcharge */
+    }
+  }
+  

@@ -1,0 +1,98 @@
+/* src/styles/Lister.css */
+
+.lister-page {
+  margin: 20px;
+}
+
+/* Style des blocs */
+.block {
+  background-color: white;
+  color: black;
+  padding: 20px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.block-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.block-description {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.block button {
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.block button:hover {
+  background-color: #138496;
+}
+
+h2{
+  font-size: 1.2rem;         
+  color: #333;              
+  font-weight: bold;         
+  text-align: center;        
+  margin-bottom: 20px;       
+  text-transform: uppercase; /* Mettre tout le texte en majuscules */
+  letter-spacing: 2px;  
+}
+
+/* Pagination */
+.pagination-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-container button {
+  margin: 0 5px;
+  padding: 5px 10px;
+}
+
+.pagination-container button.active {
+  background-color: black;
+  color: white;
+}
+
+.pagination-container button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+  .block {
+    margin-bottom: 15px;
+  }
+
+  h2{
+    font-size: 1rem;         
+    color: #333;              
+    font-weight: bold;         
+    text-align: center;        
+    margin-bottom: 20px;       
+    text-transform: uppercase; /* Mettre tout le texte en majuscules */
+    letter-spacing: 2px;  
+  }
+
+  .pagination-container {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

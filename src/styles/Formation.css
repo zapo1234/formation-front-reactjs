@@ -1,0 +1,10 @@
+/* App.css */
+
+.text-center {
+    text-align: center; /* Centrer le texte */
+    font-size: 1rem; /* Taille du texte */
+    color: #333; /* Couleur du texte */
+    font-weight: bold; /* Texte en gras */
+    margin-bottom: 20px; /* Espacement sous le texte */
+  }
+  

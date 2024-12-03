@@ -1,0 +1,92 @@
+/* Container de la page login */
+.login-container {
+    display: flex;
+    flex-direction: column; /* Aligne les éléments verticalement */
+    justify-content: center; /* Centre les éléments verticalement */
+    align-items: center; /* Centre horizontalement */
+    height: 100vh; /* Prend toute la hauteur de la fenêtre */
+    padding: 20px;
+    background-color: #f4f4f9; /* Couleur de fond de la page */
+    margin-top:-100px;
+  }
+  
+  /* Formulaire */
+  .login-form {
+    width: 100%;
+    max-width: 400px; /* Largeur max du formulaire */
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px; /* Bordures arrondies */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre pour le formulaire */
+  }
+  
+  .login-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .logo {
+    display: block;
+    margin: 0 auto 20px; /* Centrer horizontalement et ajouter de l'espace en bas */
+  }
+  
+  /* Style pour les groupes de champs */
+  .form-group {
+    display: flex;
+    flex-direction: column; /* Aligne verticalement label et input */
+    margin-bottom: 20px; /* Espacement entre les champs */
+  }
+  
+  .form-group label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px; /* Espacement entre le label et l'input */
+  }
+  
+  .form-group input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  .form-group input:focus {
+    border-color: #007BFF; /* Change la bordure lors du focus */
+    outline: none;
+  }
+  
+  /* Style du bouton de connexion */
+  .login-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: black; /* Couleur du bouton en noir */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .login-button:hover {
+    background-color: #333; /* Couleur au survol du bouton */
+  }
+  
+  /* Responsive : ajustement sur les petits écrans */
+  @media (max-width: 600px) {
+    .login-form {
+      width: 100%; /* Utilise toute la largeur disponible sur les petits écrans */
+      padding: 15px;
+    }
+    
+    .form-group input {
+      padding: 12px; /* Augmenter la taille des inputs sur petits écrans */
+    }
+  
+    .login-button {
+      padding: 14px; /* Agrandir le bouton sur petit écran */
+    }
+  }
+  

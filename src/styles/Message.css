@@ -1,0 +1,50 @@
+/* src/styles/Message.css */
+
+/* Conteneur général de la page */
+.message-page {
+    background-color: #f8f9fa; /* Fond clair */
+    padding: 20px;
+    min-height: 100vh; /* Prend toute la hauteur */
+  }
+  
+  /* Titres */
+  .message-page h2 {
+    color: #333;
+    font-size: 2rem;
+  }
+
+  .text-center {
+    font-size: 2rem;
+  }
+  
+  /* Message individuel */
+  .message {
+    margin-bottom: 20px; /* Espacement entre les messages */
+  }
+  
+  .message-content {
+    background-color: white; /* Fond blanc pour les messages */
+    border: 1px solid #ddd; /* Bordure grise claire */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+    transition: transform 0.2s ease; /* Animation au survol */
+  }
+  
+  .message-content:hover {
+    transform: scale(1.05); /* Agrandissement léger au survol */
+  }
+  
+  /* Style mobile (petits écrans) */
+  @media (max-width: 576px) {
+    .message-content {
+      padding: 10px; /* Moins de padding pour les petits écrans */
+    }
+  }
+  
+  /* Style sur grand écran */
+  @media (min-width: 992px) {
+    .message-content {
+      padding: 20px; /* Plus de padding sur les grands écrans */
+    }
+  }
+  

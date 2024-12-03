@@ -1,0 +1,27 @@
+/* Footer style */
+.footer {
+    width: 100%;               /* Prend toute la largeur de l'écran */
+    background-color: #333;    /* Couleur de fond du footer */
+    color: white;              /* Couleur du texte */
+    padding: 10px 0;           /* Padding vertical */
+    text-align: center;        /* Centre le texte horizontalement */
+    position: fixed;           /* Fixe le footer en bas */
+    bottom: 0;                 /* Place le footer en bas */
+    left: 0;                   /* Commence au bord gauche */
+    z-index: 1000;             /* Assurez-vous qu'il reste au-dessus des autres éléments */
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1); /* Optionnel : ombre subtile */
+  }
+  
+  .footer p {
+    font-size: 0.8rem;         
+    color: white;                       
+    text-align: center;           
+    text-transform: uppercase; /* Mettre tout le texte en majuscules */
+    letter-spacing: 2px;  
+  }
+  
+  /* Ajouter un padding-bottom au body pour éviter que le contenu soit masqué */
+  body {
+    padding-bottom: 50px;      /* Compense la hauteur du footer pour que le contenu ne soit pas caché */
+  }
+  

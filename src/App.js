@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+ // Correcte importation
+import Header from './components/Header';
+import Login from './pages/Login';
+import Lister from './pages/Lister';
+import Message from './pages/Message';
+import MessageDetail from './pages/MessageDetail';
+import Codepromo from './pages/Codepromo';
+import Discussion from './pages/Discussion';
+import Footer from './components/Footer';
+import Menu from './components/Menu';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <Menu />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/lister" element={<Lister />} />
+        <Route path="/message" element={<Message />} />
+        <Route path="/messagedetail/:id" element={<MessageDetail />} /> {/* passe les infos avec id. */}
+        <Route path="/discussion" element={<Discussion />} />
+        <Route path="/codepromo" element={<Codepromo />} />
+      </Routes>
+      <Footer />
+    </Router>
   );
 }
 
 export default App;
+
+
