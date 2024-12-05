@@ -31,6 +31,7 @@ function Menu() {
         <li><Link to="/message" onClick={closeMenu}><FaEnvelope /> Messages</Link></li>
         <li><Link to="/discussion" onClick={closeMenu}><FaComments /> Discussion</Link></li>
         <li><Link to="/codepromo" onClick={closeMenu}><FaGift /> Formulaire code promo</Link></li>
+        <li><Link to="/uploadfile" onClick={closeMenu}><FaGift /> Upload file</Link></li>
       </ul>
     </nav>
   );
