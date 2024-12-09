@@ -1,5 +1,7 @@
 // URL de l'API Node.js (modifiez en fonction de votre backend)
-const API_URL = 'http://localhost:5000/api/auth';  // Exemple d'URL de l'API
+//const API_URL = 'http://localhost:5000/api/auth';  // Exemple d'URL de l'API
+
+const API_URL = process.env.REACT_APP_API_URL;
 
 /**
  * Fonction pour se connecter avec l'API(connexion users)

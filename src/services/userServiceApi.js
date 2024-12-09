@@ -4,7 +4,9 @@
  * URL de l'API pour récupérer les données des utilisateurs.
  * @constant {string}
  */
-const API_URL = 'http://localhost:5000/api/';
+//const API_URL = 'http://localhost:5000/api/';
+
+const API_URL = process.env.REACT_APP_API_ROUTE;
 
 /**
  * Récupère la liste de tous les utilisateurs.
