@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { getUsers } from '../services/userServiceApi';  // Importer la fonction getUsers
 import '../styles/Lister.css'; // Importation du fichier CSS
+import { Modal, Button } from 'react-bootstrap'; // Importer le Modal et Button de react-bootstrap
 
 function Lister() {
-  const [users, setUsers] = useState([]); // État pour stocker les utilisateurs
-  const [loading, setLoading] = useState(true); // État pour le chargement
-  const [error, setError] = useState(null); // État pour gérer les erreurs
-  
+  const [users, setUsers] = useState([]); 
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null); 
+  const [selectedUser, setSelectedUser] = useState(null); // État pour l'utilisateur sélectionné
+  const [showModal, setShowModal] = useState(false); // État afficher ou fermer le modal.
+
   // Pagination
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,16 +23,28 @@ function Lister() {
     getUsers()
       .then((data) => {
         setUsers(data); // Sauvegarder les utilisateurs dans l'état
-        setLoading(false); 
+        setLoading(false);
       })
       .catch((error) => {
         setError(error.message); // Gérer l'erreur
-        setLoading(false); // Fin du chargement
+        setLoading(false); 
       });
-  }, []); 
+  }, []);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+  };
+
+  const handleViewClick = (id) => {
+    // Trouver l'utilisateur par son ID
+    const user = users.find((user) => user.id === id);
+    setSelectedUser(user); 
+    setShowModal(true); // Afficher le modal
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false); // Fermer le modal
+    setSelectedUser(null); // Réinitialiser l'utilisateur sélectionné
   };
 
   if (loading) {
@@ -65,7 +80,9 @@ function Lister() {
                 <td>{item.attribut}</td>
 
                 <td>
-                  <button className="btn btn-info">Voir</button> {/* Bouton d'action */}
+                  <button className="btn btn-info" onClick={() => handleViewClick(item.id)}>
+                    Voir
+                  </button> {/* Bouton d'action */}
                 </td>
               </tr>
             ))}
@@ -80,8 +97,11 @@ function Lister() {
             <div key={item.id} className="col-12 mb-4">
               <div className="block">
                 <h5 className="block-title">{item.name}</h5>
-                <p className="block-description">{item.description}</p>
-                <button className="btn btn-info">Voir</button> {/* Bouton d'action */}
+                <p className="block-description">{item.username}</p>
+                <p className="block-description">{item.email}</p>
+                <button className="btn btn-info" onClick={() => handleViewClick(item.id)}>
+                  Voir
+                </button> {/* Bouton d'action */}
               </div>
             </div>
           ))}
@@ -114,6 +134,27 @@ function Lister() {
           Suivant
         </button>
       </div>
+
+      {/* Modal de details */}
+      {selectedUser && (
+        <Modal show={showModal} onHide={handleCloseModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>Détails de l'utilisateur</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p><strong>Nom:</strong> {selectedUser.name}</p>
+            <p><strong>Prénom:</strong> {selectedUser.username}</p>
+            <p><strong>Email:</strong> {selectedUser.email}</p>
+            <p><strong>Status de compte:</strong> {selectedUser.attribut}</p>
+            {/* Ajouter d'autres informations si nécessaire */}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseModal}>
+              Fermer
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      )}
     </div>
   );
 }

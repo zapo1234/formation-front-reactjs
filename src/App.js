@@ -13,7 +13,7 @@ import Profile from './pages/Profile';
 import Discussion from './pages/Discussion';
 import Footer from './components/Footer';
 import Menu from './components/Menu';
-import PrivateRoute from './components/PrivateRoute'; // Importer le composant PrivateRoute
+import PrivateRoute from './components/PrivateRoute'; // Importer le composant PrivateRoute(sécurisation de mes pages)
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -31,7 +31,7 @@ function App() {
     setIsAuthenticated(true);
   };
 
-  // gerer la deconnexion depuis etat
+  // l'etat de de deconnexion.
   const handleLogout = () => {
     localStorage.removeItem('token');
     setIsAuthenticated(false);
