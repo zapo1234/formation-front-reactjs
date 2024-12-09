@@ -1,50 +1,58 @@
-// src/pages/Lister.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { getUsers } from '../services/userServiceApi';  // Importer la fonction getUsers
 import '../styles/Lister.css'; // Importation du fichier CSS
 
 function Lister() {
-  // exmple de data
-  const data = [
-    { id: 1, name: "Élément 1", description: "Description de l'élément 1" },
-    { id: 2, name: "Élément 2", description: "Description de l'élément 2" },
-    { id: 3, name: "Élément 3", description: "Description de l'élément 3" },
-    { id: 4, name: "Élément 4", description: "Description de l'élément 4" },
-    { id: 5, name: "Élément 5", description: "Description de l'élément 5" },
-    { id: 6, name: "Élément 6", description: "Description de l'élément 6" },
-    { id: 7, name: "Élément 7", description: "Description de l'élément 7" },
-    { id: 8, name: "Élément 8", description: "Description de l'élément 8" },
-    { id: 9, name: "Élément 9", description: "Description de l'élément 9" },
-    { id: 10, name: "Élément 10", description: "Description de l'élément 10" },
-    { id: 11, name: "Élément 11", description: "Description de l'élément 11" },
-    { id: 12, name: "Élément 12", description: "Description de l'élément 12" },
-    { id: 13, name: "Élément 13", description: "Description de l'élément 13" },
-    { id: 14, name: "Élément 14", description: "Description de l'élément 14" },
-    { id: 15, name: "Élément 15", description: "Description de l'élément 15" },
-  ];
-
+  const [users, setUsers] = useState([]); // État pour stocker les utilisateurs
+  const [loading, setLoading] = useState(true); // État pour le chargement
+  const [error, setError] = useState(null); // État pour gérer les erreurs
+  
   // Pagination
-  const itemsPerPage = 5;
+  const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(data.length / itemsPerPage);
+  const currentItems = users.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(users.length / itemsPerPage);
+
+  // Récupérer les utilisateurs via l'API
+  useEffect(() => {
+    getUsers()
+      .then((data) => {
+        setUsers(data); // Sauvegarder les utilisateurs dans l'état
+        setLoading(false); 
+      })
+      .catch((error) => {
+        setError(error.message); // Gérer l'erreur
+        setLoading(false); // Fin du chargement
+      });
+  }, []); 
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
+  if (loading) {
+    return <div>Chargement...</div>; // Afficher pendant le chargement
+  }
+
+  if (error) {
+    return <div>Erreur: {error}</div>; // Afficher en cas d'erreur
+  }
+
   return (
     <div className="lister-page">
-      <h2>Exercice tableau en react js pagination</h2>
+      <h2>Afficher les utilisateurs de compte dans la BDD</h2>
 
-      {/*  grands écrans */}
+      {/* Grands écrans */}
       <div className="table-responsive d-none d-md-block">
         <table className="table table-bordered">
           <thead>
             <tr>
               <th>Nom</th>
-              <th>Description</th>
+              <th>Prénom</th>
+              <th>Email</th>
+              <th>Status de compte</th>
               <th>Action</th> {/* Nouvelle colonne pour les actions */}
             </tr>
           </thead>
@@ -52,7 +60,10 @@ function Lister() {
             {currentItems.map((item) => (
               <tr key={item.id}>
                 <td>{item.name}</td>
-                <td>{item.description}</td>
+                <td>{item.username}</td>
+                <td>{item.email}</td>
+                <td>{item.attribut}</td>
+
                 <td>
                   <button className="btn btn-info">Voir</button> {/* Bouton d'action */}
                 </td>
@@ -62,7 +73,7 @@ function Lister() {
         </table>
       </div>
 
-      {/* affichage sur les écrans mobiles */}
+      {/* Affichage sur les écrans mobiles */}
       <div className="d-block d-md-none">
         <div className="row">
           {currentItems.map((item) => (
