@@ -44,12 +44,12 @@ function App() {
       <Menu isAuthenticated={isAuthenticated} onLogout={handleLogout} />
       <Routes>
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
-        <Route path="/lister" element={<Lister />} />
         <Route path="/message" element={<Message />} />
-        <Route path="/messagedetail/:id" element={<MessageDetail />} /> {/* Passe les infos avec id. */}
-        <Route path="/discussion" element={<Discussion />} />
-        <Route path="/codepromo" element={<Codepromo />} />
-        <Route path="/uploadFile" element={<UploadFile />} />
+        <Route path="/lister" element={<PrivateRoute element={<Lister />} />} />
+        <Route path="/messagedetail/:id" element={<PrivateRoute element={<MessageDetail />} />} /> {/* Passe les infos avec id. */}
+        <Route path="/discussion" element={<PrivateRoute element={<Discussion />} />} />
+        <Route path="/codepromo" element={<PrivateRoute element={<Codepromo />} />} />
+        <Route path="/uploadFile" element={<PrivateRoute element={<UploadFile />} />} />
         {/* Route protégée de profil utilisateur connecté */}
         <Route path="/profile" element={<PrivateRoute element={<Profile />} />} />
       </Routes>

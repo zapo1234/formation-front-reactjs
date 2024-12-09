@@ -1,7 +1,12 @@
 // URL de l'API Node.js (modifiez en fonction de votre backend)
 const API_URL = 'http://localhost:5000/api/auth';  // Exemple d'URL de l'API
 
-// Fonction pour se connecter
+/**
+ * Fonction pour se connecter avec l'API(connexion users)
+ * 
+ * @param {string} email - L'email de l'utilisateur.
+ * @param {string} password - Le mot de passe de l'utilisateur.
+ */
 function login(email, password) {
   return fetch(`${API_URL}/login`, {
     method: 'POST',
@@ -18,15 +23,15 @@ function login(email, password) {
     });
 }
 
-
-
-// Fonction pour gérer la déconnexion avec appel API via fetch
+/**
+ * Fonction pour gérer la déconnexion de l'utilisateur en appelant l'API.
+ */
 function logout() {
   return fetch(`${API_URL}/logout`, {
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`, // 
-      'Content-Type': 'application/json', 
+      'Authorization': `Bearer ${localStorage.getItem('token')}`, // Utilisation du token dans le localStorage
+      'Content-Type': 'application/json',
     }
   })
     .then((response) => {
@@ -46,8 +51,5 @@ function logout() {
     });
 }
 
-
-
-// Exportation de la fonction login
-module.exports = { login,logout };
-
+// Exportation des fonctions login et logout
+module.exports = { login, logout };

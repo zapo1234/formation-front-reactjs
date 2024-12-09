@@ -8,12 +8,7 @@ const API_URL = 'http://localhost:5000/api/';
 
 /**
  * Récupère la liste de tous les utilisateurs.
- *
  * Cette fonction envoie une requête GET à l'API pour récupérer tous les utilisateurs.
- * Elle utilise un token d'authentification stocké dans le localStorage pour l'autorisation.
- *
- * @returns {Promise<Object[]>} Une promesse qui résout un tableau d'objets utilisateurs.
- * @throws {Error} Si le token est manquant ou expiré, ou si la récupération échoue.
  */
 export const getUsers = () => {
   return new Promise(async (resolve, reject) => {
@@ -48,14 +43,10 @@ export const getUsers = () => {
 
 /**
  * Récupère un utilisateur spécifique par son ID.
- *
  * Cette fonction envoie une requête GET à l'API pour récupérer un utilisateur en particulier,
- * en utilisant un ID passé en paramètre. Elle utilise un token d'authentification stocké dans
  * le localStorage pour l'autorisation.
  *
  * @param {string|number} userId L'ID de l'utilisateur à récupérer.
- * @returns {Promise<Object>} Une promesse qui résout l'objet de l'utilisateur.
- * @throws {Error} Si le token est manquant ou expiré, ou si la récupération échoue.
  */
 export const getUserById = (userId) => {
   return new Promise(async (resolve, reject) => {
