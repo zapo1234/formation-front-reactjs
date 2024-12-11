@@ -5,7 +5,6 @@ import { Modal, Button } from 'react-bootstrap'; // Importer le Modal et Button 
 
 function Lister() {
   const [users, setUsers] = useState([]); 
-  const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null); 
   const [selectedUser, setSelectedUser] = useState(null); // État pour l'utilisateur sélectionné
   const [showModal, setShowModal] = useState(false); // État afficher ou fermer le modal.
@@ -23,11 +22,11 @@ function Lister() {
     getUsers()
       .then((data) => {
         setUsers(data); // Sauvegarder les utilisateurs dans l'état
-        setLoading(false);
+        
       })
       .catch((error) => {
         setError(error.message); // Gérer l'erreur
-        setLoading(false); 
+        
       });
   }, []);
 
@@ -44,12 +43,9 @@ function Lister() {
 
   const handleCloseModal = () => {
     setShowModal(false); // Fermer le modal
-    setSelectedUser(null); // Réinitialiser l'utilisateur sélectionné
+    setSelectedUser(null); // 
   };
 
-  if (loading) {
-    return <div>Chargement...</div>; // Afficher pendant le chargement
-  }
 
   if (error) {
     return <div>Erreur: {error}</div>; // Afficher en cas d'erreur

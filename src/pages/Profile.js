@@ -12,14 +12,14 @@ function Profile() {
       <Row className="justify-content-center mt-5">
         <Col xs={12} md={8} lg={6}>
           <div className="text-center">
-            <h1>Information sur l'utilisateur</h1>
+            <h1>Information User</h1>
             {/* Vérifiez si l'utilisateur est authentifié */}
             {token ? (
               <div className="d-flex justify-content-center align-items-center">
                 <Alert variant="success" className="w-100">
                   <div className="d-flex justify-content-between align-items-center w-100">
                     <p>
-                      Bonjour je suis bien connecté, voici votre Email : <strong>{email}</strong>
+                      Bonjour vous etes  bien connecté, voici votre Email : <strong>{email}</strong>
                     </p>
                     
                   </div>
