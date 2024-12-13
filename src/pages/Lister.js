@@ -63,7 +63,6 @@ function Lister() {
               <th>Nom</th>
               <th>Prénom</th>
               <th>Email</th>
-              <th>Status de compte</th>
               <th>Action</th> {/* Nouvelle colonne pour les actions */}
             </tr>
           </thead>
@@ -71,9 +70,9 @@ function Lister() {
             {currentItems.map((item) => (
               <tr key={item.id}>
                 <td>{item.name}</td>
-                <td>{item.username}</td>
+                <td>{item.identifier}</td>
                 <td>{item.email}</td>
-                <td>{item.attribut}</td>
+
 
                 <td>
                   <button className="btn btn-info" onClick={() => handleViewClick(item.id)}>

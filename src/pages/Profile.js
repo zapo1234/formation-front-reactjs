@@ -5,6 +5,7 @@ function Profile() {
   // Récupérer les données stockées dans localStorage
   const token = localStorage.getItem('token');
   const email = localStorage.getItem('email');
+  const isAdmin = localStorage.getItem('is_admin');
 
 
   return (
